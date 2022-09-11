@@ -20,7 +20,7 @@ class Controller extends BaseController
             config('tripay.api_key'),
             config('tripay.private_key'),
             config('tripay.merchant_code'),
-            'sandbox' // fill for sandbox mode, leave blank if in production mode
+            '' // fill for sandbox mode, leave blank if in production mode
         );
     }
 }
