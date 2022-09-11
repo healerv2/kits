@@ -43,7 +43,7 @@
 
       <li class="{{ Request::route()->getName() == 'tutorials.index' ? ' active' : '' }}"><a class="nav-link" href="{{ route('tutorials.index') }}"><i class="fas  fa-folder"></i><span>Tutorial</span></a></li>
 
-      <li class="{{ Request::route()->getName() == 'kegiatan.index' ? ' active' : '' }} "><a class="nav-link" href="{{ route('kegiatan.index') }}"><i class="fas fa-calendar"></i><span>Kegiatan</span></a></li>
+      <li class="{{ Request::route()->getName() == 'kegiatans.index' ? ' active' : '' }} "><a class="nav-link" href="{{ route('kegiatans.index') }}"><i class="fas fa-calendar"></i><span>Kegiatan</span></a></li>
 
      {{--  <li><a class="nav-link" href="#"><i class="fas fa-image"></i><span>Galery</span></a></li>
 
