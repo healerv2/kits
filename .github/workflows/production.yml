@@ -1,4 +1,4 @@
-name: Laravel
+name: Deployment Production
 
 on:
   push:
@@ -33,3 +33,21 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+      - name: deployment
+      uses: easingthemes/ssh-deploy@v2.1.4
+      with:
+        # Private Key
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        # Remote host
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        # Remote user
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        # Remote port
+        REMOTE_PORT: 22
+        # Source directory
+        SOURCE: /
+        # optional, default is
+        # Target directory
+        TARGET: /var/www/kits
+        # Arguments to pass to rsync
+        ARGS: "-rltgoDzvO --exclude '.env'"
