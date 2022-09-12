@@ -22,6 +22,7 @@ class KITSPeduliController extends Controller
         $title = 'KITS Peduli';
         $payment = new TripayService();
         $metode= $payment->getChannelsPayment();
+        //$metode = $this->tripay->initChannelPembayaran()->getJson()[2]->payment;
         //dd($metode);
         activity()->log('akses menu KITS Peduli');
 
