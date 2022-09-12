@@ -20,9 +20,10 @@ class KITSPeduliController extends Controller
     {
         //
         $title = 'KITS Peduli';
-        $payment = new TripayService();
-        $metode= $payment->getChannelsPayment();
-        //dd($metode);
+        // $payment = new TripayService();
+        // $metode= $payment->getChannelsPayment();
+        $metode = $this->tripay->initChannelPembayaran()->getData()[2]->payment;
+        // dd($metode);
         activity()->log('akses menu KITS Peduli');
 
         return view('kits-peduli.add',compact('title','metode'));

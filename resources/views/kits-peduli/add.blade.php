@@ -33,14 +33,14 @@
 								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Metode Pembayaran</label>
 								<div class="col-sm-12 col-md-7">
 									@foreach ($metode as $m)
-									@if($m->active)
+									{{-- @if($m->active) --}}
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="metode"  value="{{$m->code}}">
 										<label class="form-check-label">
 											{{$m->name}}
 										</label>
 									</div>
-									@endif
+									{{-- @endif --}}
 									@endforeach
 								</div>
 							</div>
