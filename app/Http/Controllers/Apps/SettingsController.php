@@ -82,6 +82,7 @@ class SettingsController extends Controller
         $settings->nama_pembina = $request->nama_pembina;
         $settings->alamat = $request->alamat;
         $settings->telepon = $request->telepon;
+        $settings->periode = $request->periode;
 
         if ($request->hasFile('path_logo')) {
             $file = $request->file('path_logo');

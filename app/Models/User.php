@@ -39,6 +39,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'detail_aktivitas',
         'angkatan_id',
         'tahun_lulus',
+        'candidate_id',
+        'status_voting'
     ];
 
     /**
@@ -84,5 +86,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeIsNotAdmin($query)
     {
         return $query->where('level', '!=', 1);
+    }
+
+    public function kandidat()
+    {
+        return $this->belongsTo('App\Models\Kandidat', 'kandidat_id');
     }
 }

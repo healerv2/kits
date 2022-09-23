@@ -60,33 +60,6 @@ class UsersController extends Controller
         ->make(true);
     }
 
-    // public function alumni()
-    // {
-    //     //
-    //     $title = 'Data Alumni';
-
-    //     return view('users.alumni',compact('title'));
-    // }
-
-    //  public function data_alumni()
-    // {
-    //     $users = User::where('status','alumni')->orderBy('id', 'desc')->get();
-
-    //     return datatables()
-    //     ->of($users)
-    //     ->addIndexColumn()
-    //     ->addColumn('aksi', function ($users) {
-    //         return '
-    //         <div class="btn-group">
-    //         <a class="btn btn-info btn-action mr-1" data-toggle="tooltip"href="'.route('users.detail', $users->id).'"><i class="fa fa-search-plus"></i></a>
-    //         <button onclick="editForm(`'. route('users.update', $users->id) .'`)" class="btn btn-primary btn-action mr-1" data-toggle="tooltip"><i class="fa fa-edit"></i></button>
-    //         <button onclick="deleteData(`'. route('users.destroy', $users->id) .'`)" class="btn btn-danger btn-action" data-toggle="tooltip"><i class="fa fa-trash"></i></button>
-    //         </div>
-    //         ';
-    //     })
-    //     ->rawColumns(['aksi'])
-    //     ->make(true);
-    // }
 
     /**
      * Show the form for creating a new resource.

@@ -88,7 +88,7 @@
 								</div>
 							</div>
 							<div class="card-footer">
-								<a href="{{ route('users.index') }}" class="btn btn-danger">Back</a>
+								<a href="{{ route('users.index') }}" class="btn btn-danger">Kembali</a>
 							</div>
 						</div>
 					</div>
