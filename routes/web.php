@@ -15,6 +15,12 @@ use App\Http\Controllers\Apps\{
     ActivityLogController,
     KegiatanController,
     ChangePasswordController,
+    PengeluaranController,
+    LaporanController,
+    KandidatController,
+    VotingController,
+    KITSDuitkuController,
+    KITSDuitkuCallbackController,
 };
 
 /*
@@ -54,10 +60,10 @@ Route::group(['middleware' => 'auth','verified'], function () {
     //dashboad
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //Wilayan Indonesia
-    Route::get('provinces', [DependantDropdownController::class, 'provinces'])->name('provinces');
-    Route::get('cities', [DependantDropdownController::class, 'cities'])->name('cities');
-    Route::get('districts', [DependantDropdownController::class, 'districts'])->name('districts');
-    Route::get('villages', [DependantDropdownController::class, 'villages'])->name('villages');
+    // Route::get('provinces', [DependantDropdownController::class, 'provinces'])->name('provinces');
+    // Route::get('cities', [DependantDropdownController::class, 'cities'])->name('cities');
+    // Route::get('districts', [DependantDropdownController::class, 'districts'])->name('districts');
+    // Route::get('villages', [DependantDropdownController::class, 'villages'])->name('villages');
 
     Route::group(['middleware' => 'level:1,2,3,4'], function () {
          //Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -96,10 +102,37 @@ Route::group(['middleware' => 'auth','verified'], function () {
        Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
        Route::get('/settings/first', [SettingsController::class, 'show'])->name('settings.show');
        Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+       //Laporan
+       Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+       Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+       //voting
+       Route::get('/voting', [VotingController::class, 'pilihan'])->name('voting.pilihan');
+       Route::get('/voting/pdf', [VotingController::class, 'pdf'])->name('voting.pdf');
+       Route::get('/voter', [VotingController::class, 'list_voter'])->name('list.pemilih');
+       Route::get('/voter/data', [VotingController::class, 'data'])->name('voter.data');
+       Route::get('/summary', [VotingController::class, 'hasil'])->name('voting.summary');
+       Route::put('/users/{id}/pilih', [VotingController::class, 'vote'])->name('users.vote');
+       //kits peduli by duitku
+       Route::get('/kits-berbagi', [KITSDuitkuController::class, 'index'])->name('kits-berbagi.index');
+       Route::post('/kits-berbagi/payment', [KITSDuitkuController::class, 'postPayment'])->name('kits-berbagi.payment');
+       Route::post('/kits-berbagi/paymentMethod', [KITSDuitkuController::class, 'postPaymentMethod'])->name('kits-berbagi.postpayment');
    });
     Route::group(['middleware' => 'level:1,2,3,4'], function () {
         Route::get('/profil', [UsersController::class, 'profil'])->name('users.profil');
         Route::post('/profil', [UsersController::class, 'updateprofil'])->name('users.update_profil');
         Route::post('/change-password', [ChangePasswordController::class, 'store'])->name('users.change-password');
     });
+
+    Route::group(['middleware' => 'level:1,2'], function () {
+       //pengeluaran
+        Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
+        Route::resource('/pengeluaran', PengeluaranController::class);
+        //kandidat
+        Route::get('/candidate/data', [KandidatController::class, 'data'])->name('candidate.data');
+        Route::get('/candidate/detail/{id}', [KandidatController::class, 'detail'])->name('candidate.detail');
+        Route::resource('/candidate', KandidatController::class);
+    });
 });
+
+Route::post('/callback/payment', [KITSDuitkuCallbackController::class, 'paymentCallback'])->name('callback.payment');
+Route::get('/callback/return', [KITSDuitkuCallbackController::class, 'myReturnCallback'])->name('callback.return');

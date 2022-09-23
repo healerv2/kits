@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Kegiatan;
 use App\Models\Tutorial;
 use App\Models\KITSPeduli;
+use App\Models\Pengeluaran;
 
 class DashboardController extends Controller
 {
@@ -64,9 +65,26 @@ class DashboardController extends Controller
         $chart_aktivitas_alumni->dataset = (array_values($aktivitas_alumni));
         //$chart_alumni_bekerja->colours = $colours;
 
+        //saldo kits
+        $awal = date('Y-m-01');
+        $akhir = date('Y-m-d');
+        $saldo = 0;
+        $sisa_saldo = 0;
+
+        while (strtotime($awal) <= strtotime($akhir)) {
+            $tanggal = $awal;
+            $awal = date('Y-m-d', strtotime("+1 day", strtotime($awal)));
+
+            $total_saldo = KITSPeduli::where('updated_at', 'LIKE', "%$tanggal%")->sum('nominal');
+            $total_pengeluaran = Pengeluaran::where('created_at', 'LIKE', "%$tanggal%")->sum('nominal');
+
+            $saldo = $total_saldo - $total_pengeluaran;
+            $sisa_saldo += $saldo;
+        }
+
 
         if (auth()->user()->level == 1) {
-            return view('dashboard.admin',compact('title','users','total_alumni','total_siswa','tutorial_approved','chart_tahun_lulus','chart_aktivitas_alumni','kitspeduli'));
+            return view('dashboard.admin',compact('title','users','total_alumni','total_siswa','tutorial_approved','chart_tahun_lulus','chart_aktivitas_alumni','kitspeduli','saldo'));
         } elseif (auth()->user()->level == 2) {
             return view('pembina.index',compact('title','users','total_alumni','total_siswa','tutorial_approved','chart_tahun_lulus','chart_aktivitas_alumni','kitspeduli'));
         } elseif (auth()->user()->level == 3) {

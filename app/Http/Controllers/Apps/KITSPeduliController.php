@@ -119,7 +119,7 @@ class KITSPeduliController extends Controller
             //'return_url'        => 'http://localhost:8000/kits-peduli/terima-kasih',
             'return_url'        => URL::to('/') . '/kits-peduli/terima-kasih',
             // 'expired_time'      => (time()+(24*60*60)), // 24 jam
-            'expired_time'      => (time()+(30*60)),
+            'expired_time'      => (time()+(60*60)),
             'signature'         => $init->createSignature()
         ]);
 

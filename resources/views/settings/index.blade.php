@@ -53,6 +53,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
+                                    <label for="telepon" class="form-control-label col-sm-3 text-md-right">Periode Pemilu KITS</label>
+                                    <div class="col-sm-6 col-md-9">
+                                        <input type="text" name="periode" class="form-control" id="periode">
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center">
                                     <label class="form-control-label col-sm-3 text-md-right">Logo Komunitas</label>
                                     <div class="col-sm-6 col-md-9">
                                         <div class="custom-file">
@@ -114,6 +120,7 @@
             $('[name=alamat]').val(response.alamat);
             $('[name=alamat_kantor]').val(response.alamat_kantor);
             $('[name=telepon]').val(response.telepon);
+            $('[name=periode]').val(response.periode);
 
             let words = response.nama_komunitas.split(' ');
             let word  = '';

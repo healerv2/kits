@@ -61,7 +61,7 @@
 							<h4>KITS Peduli</h4>
 						</div>
 						<div class="card-body">
-						{{ format_uang($kitspeduli) }}
+						{{ format_uang($saldo) }}
 						</div>
 					</div>
 				</div>

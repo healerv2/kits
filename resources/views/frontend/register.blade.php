@@ -66,7 +66,7 @@
                     <div class="form-group col-6">
                       <label>Status</label>
                       <select name="status_akun" class="form-control selectric">
-                        <option>==Pilih Status==</option>
+                      {{--   <option>==Pilih Status==</option> --}}
                         <option value="alumni">Alumni</option>
                         <option value="siswa">Siswa</option>
                       </select>

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^2.0",
         "consoletvs/charts": "6.*",
         "cviebrock/eloquent-sluggable": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
@@ -19,6 +20,7 @@
         "laravel/ui": "^3.4",
         "muhammadnan/tripay-payment-gateway": "^2.0",
         "opcodesio/log-viewer": "^1.2",
+        "royryando/laravel-duitku": "^1.0",
         "spatie/laravel-activitylog": "^4.5",
         "tightenco/ziggy": "^1.0",
         "yajra/laravel-datatables-oracle": "^10.0"
